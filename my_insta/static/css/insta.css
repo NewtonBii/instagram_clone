@@ -22,7 +22,13 @@ body {
   margin-bottom: 20px;
   width: 100%;
   height: auto;
-  background-color: #2196F3;
+  background-color: white;
+  display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding:10px * 2;
+	border-bottom: 1px solid #ddd;
+	background: white;
 }
 
 .logo,
