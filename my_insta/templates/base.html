@@ -1,0 +1,41 @@
+{% load bootstrap3%}{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8"> {% if title %}
+  <title>InstaGrama </title>
+  {% else %}
+  <title> InstaGrama </title>
+  {% endif %} {% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/insta.css'%}">
+  <link href="https://fonts.googleapis.com/css?family=Chewy|Monoton|Cabin+Sketch|Concert+One|Arima+Madurai|Cabin" rel="stylesheet"> {% endblock %}
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar">
+
+    <div class="container">
+
+      <h1 class="logo"><a href="#"><img src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png" alt="" style="width:25px">
+      </a>|
+    </h1>
+    <div class="logoname" style="display:inline">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" alt="" style="width:100px">
+    </div>
+      <ul class="nav nav-right">
+
+      </ul>
+    </div><!--/.container-->
+
+  </nav><!--/.navbar-->
+
+{% block scripts %} {%block content %}{% endblock %}
+
+  {% bootstrap_javascript %}{% endblock %}
+</body>
+
+</html>
