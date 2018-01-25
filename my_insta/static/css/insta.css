@@ -64,6 +64,14 @@ body {
   line-height: 39px;
 }
 
+.input{
+  padding: 10px;
+	text-align: center;
+	border-radius: 5px;
+	border: 2px solid #ddd;
+	outline: 0;
+  margin-right:300px
+}
 /* responsive */
 @media screen and (max-width: 677px) {
   .container {
