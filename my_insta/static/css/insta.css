@@ -64,8 +64,6 @@ body {
   line-height: 39px;
 }
 
-
-
 /* responsive */
 @media screen and (max-width: 677px) {
   .container {

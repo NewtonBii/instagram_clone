@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Chewy|Monoton|Cabin+Sketch|Concert+One|Arima+Madurai|Cabin" rel="stylesheet"> {% endblock %}
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
+
 </head>
 
 <body>
@@ -27,14 +28,16 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" alt="" style="width:150px">
     </div>
       <ul class="nav nav-right">
-
+        <i class="fa fa-compass" aria-hidden="true" style="font-size:40px; margin-right:30px"></i>
+        <i class="fa fa-heart-o" aria-hidden="true" style="font-size:40px; margin-right:30px"></i>
+        <i class="fa fa-user-o" aria-hidden="true" style="font-size:40px; margin-right:30px"></i>
       </ul>
     </div><!--/.container-->
 
   </nav><!--/.navbar-->
 
 {% block scripts %} {%block content %}{% endblock %}
-
+<script src="https://use.fontawesome.com/6198bcf0a2.js"></script>
   {% bootstrap_javascript %}{% endblock %}
 </body>
 
