@@ -12,6 +12,7 @@ class Image(models.Model):
     image_name = models.CharField(max_length=30)
     image_caption = models.TextField()
     likes = models.IntegerField()
+    date_create = models.DateTimeField(auto_now_add=True)
     comments = models.ManyToManyField(Comments)
     user = models.ForeignKey(User)
 
