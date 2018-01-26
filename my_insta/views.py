@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import NewStatusForm
+from .models import Image, Comments, Profile
 
 # Create your views here.
 def timelines(request):
-    return render(request, 'timelines.html')
+    images = Image.objects.all()
+    return render(request, 'timelines.html', {'images':images})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -19,6 +21,7 @@ def new_status(request):
             status = form.save()
             status.user = current_user
             status.save()
+        HttpResponseRedirect('timelines')
     else:
-        form = NewArticleForm()
-    return render(request, 'timelines.html', {"form": form})
+        form = NewStatusForm()
+    return render(request, 'new_status.html', {"form": form})

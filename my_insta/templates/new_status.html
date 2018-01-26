@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% load bootstrap3 %} {% load staticfiles %}
+{% block content %}
+<div class="well" style="position:absolute; z-index:100; background-color:black">
+  <form action="{% url 'allTimelines' %}" method="post" enctype="multipart/form-data">
+    {%csrf_token%} {% bootstrap_form form%}
+    <input type="submit" class="btn btn-success btn-lg" value="POST">
+  </form>
+</div>
+{% endblock %}

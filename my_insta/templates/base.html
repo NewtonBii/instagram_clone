@@ -157,7 +157,7 @@
         </form>
         {% if user.is_authenticated %}
         <div class="iconns" style="font-size:40px; display:inline">
-          <a href="#">
+          <a href="{% url 'newStatus' %}">
             <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-right:30px"></i>
           </a>
           <a href="{% url 'myProfile' %}">
