@@ -10,7 +10,7 @@
       <div class="well" style="background-color:white">
         <header>
           <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%">
-          <p style="display:inline; margin-left:10px; font-weight:bolder; font-size:16px">Newton Kipng'eno Bii</p>
+          <p style="display:inline; margin-left:10px; font-weight:bolder; font-size:16px">{{image.user}}</p>
         </header>
         <img src="{{image.image.url}}" class="img-responsive">
         <div class="like" style="font-size:30px">
@@ -18,9 +18,11 @@
           <i class="fa fa-comments-o" aria-hidden="true"></i>
           <i class="fa fa-bookmark-o" aria-hidden="true" style="float:right"></i>
         </div>
-        <p style="margin-top:10px;font-weight:bolder; font-size:16px">1000 Likes</p><br>
-        <p style="margin-top:-20px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Kepha Okari</span>Awesome Place</p>
-        <p style="font-size:14px;color:grey">5 DAYS AGO</p>
+        <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
+        {% for comment in comments %}
+        <p style="margin-top:-20px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">{{comment.user}}</span>{{comment.comment}}</p>
+        {% endfor %}
+        <p style="font-size:14px;color:grey">{{image.date_uploaded|timesince}} ago</p>
         <hr>
         <form class="" action="" method="post">
           <input type="text" name="" value="" placeholder="Add a comment" style="border:none; padding:10px; width:100%">
@@ -40,26 +42,12 @@
         <p style="float:left; font-size:15px; font-weight:bolder; color:grey">Stories</p>
         <p style="float:right; font-weight:bolder; font-size:15px">Watch All</p>
         <div class="stories" style="overflow-y:auto; height:300px;margin-top:50px;padding:10px; border-bottom: 1px solid #ddd; width:100%">
+          {% for profile in profiles %}
           <div class="user_stories" style="margin-bottom:20px">
-            <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
-            <p style="font-weight:bold;font-size:16px">biinewton<br><span style="font-size:15px;font-weight:normal; color:grey">20 minutes ago</span></p>
+            <img src="{{profile.profile_photo.url}}" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
+            <p style="font-weight:bold;font-size:16px">{{profile.user}}<br><span style="font-size:15px;font-weight:normal; color:grey">20 minutes ago</span></p>
           </div>
-          <div class="user_stories" style="margin-bottom:20px">
-            <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
-            <p style="font-weight:bold;font-size:16px">biinewton<br><span style="font-size:15px;font-weight:normal; color:grey">20 minutes ago</span></p>
-          </div>
-          <div class="user_stories" style="margin-bottom:20px">
-            <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
-            <p style="font-weight:bold;font-size:16px">biinewton<br><span style="font-size:15px;font-weight:normal; color:grey">20 minutes ago</span></p>
-          </div>
-          <div class="user_stories" style="margin-bottom:20px">
-            <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
-            <p style="font-weight:bold;font-size:16px">biinewton<br><span style="font-size:15px;font-weight:normal; color:grey">20 minutes ago</span></p>
-          </div>
-          <div class="user_stories" style="margin-bottom:20px">
-            <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
-            <p style="font-weight:bold;font-size:16px">biinewton<br><span style="font-size:15px;font-weight:normal; color:grey">20 minutes ago</span></p>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -71,25 +59,27 @@
     <div class="col-sm-3">
     </div>
     <div class="col-sm-6">
+      {% for image in images %}
       <div class="well" style="background-color:white">
         <header>
           <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%">
-          <p style="display:inline; margin-left:10px; font-weight:bolder; font-size:16px">Newton Kipng'eno Bii</p>
+          <p style="display:inline; margin-left:10px; font-weight:bolder; font-size:16px">{{image.user}}</p>
         </header>
-        <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" class="img-responsive">
+        <img src="{{image.image.url}}" class="img-responsive">
         <div class="like" style="font-size:30px">
           <i class="fa fa-heart-o" aria-hidden="true" style="margin-right:5px"></i>
           <i class="fa fa-comments-o" aria-hidden="true"></i>
           <i class="fa fa-bookmark-o" aria-hidden="true" style="float:right"></i>
         </div>
-        <p style="margin-top:10px;font-weight:bolder; font-size:16px">1000 Likes</p><br>
+        <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
         <p style="margin-top:-20px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Kepha Okari</span>Awesome Place</p>
-        <p style="font-size:14px;color:grey">5 DAYS AGO</p>
+        <p style="font-size:14px;color:grey">{{image.date_uploaded|timesince}} ago</p>
         <hr>
         <form class="" action="" method="post">
           <input type="text" name="" value="" placeholder="Add a comment" style="border:none; padding:10px; width:100%">
         </form>
       </div>
+      {% endfor %}
     </div>
     <div class="col-sm-3">
     </div>

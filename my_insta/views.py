@@ -2,11 +2,14 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import NewStatusForm
 from .models import Image, Comments, Profile
+import json
 
 # Create your views here.
 def timelines(request):
     images = Image.objects.all()
-    return render(request, 'timelines.html', {'images':images})
+    profiles = Profile.objects.all()
+    print(images)
+    return render(request, 'timelines.html', {'images':images, 'profiles':profiles})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):

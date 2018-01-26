@@ -6,8 +6,7 @@ from tinymce.models import HTMLField
 class Comments(models.Model):
     comment = models.TextField()
     user = models.ForeignKey(User)
-    def __str__(self):
-        return self.comments
+
 
 
 
