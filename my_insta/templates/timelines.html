@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content%}
 <div class="container-fluid" style="margin-top:150px">
+  {% if user.is_authenticated %}
   <div class="col-sm-7">
     <div class="col-sm-2">
 
@@ -61,9 +62,35 @@
       </div>
       </div>
 
-    <div class="col-sm-4" style="position:fixed">
+    <div class="col-sm-4">
 
     </div>
-  </div>
+    {% else %}
+    <div class="col-sm-3">
+      </div>
+      <div class="col-sm-6">
+        <div class="well" style="background-color:white">
+          <header>
+            <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%">
+            <p style="display:inline; margin-left:10px; font-weight:bolder; font-size:16px">Newton Kipng'eno Bii</p>
+          </header>
+          <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" class="img-responsive">
+          <div class="like" style="font-size:30px">
+            <i class="fa fa-heart-o" aria-hidden="true" style="margin-right:5px"></i>
+            <i class="fa fa-comments-o" aria-hidden="true"></i>
+            <i class="fa fa-bookmark-o" aria-hidden="true" style="float:right"></i>
+          </div>
+          <p style="margin-top:10px;font-weight:bolder; font-size:16px">1000 Likes</p><br>
+          <p style="margin-top:-20px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Kepha Okari</span>Awesome Place</p>
+          <p style="font-size:14px;color:grey">5 DAYS AGO</p>
+          <hr>
+          <form class="" action="" method="post">
+            <input type="text" name="" value="" placeholder="Add a comment" style="border:none; padding:10px; width:100%">
+          </form>
+        </div>
+      </div>
+      <div class="col-sm-3">
+      </div>
+  {% endif %}
 </div>
 {% endblock %}
