@@ -16,11 +16,81 @@
 
   {% block styles %}
     {% bootstrap_css %}
+    <style media="screen">
+    .navbar {
+      padding: 20px 0;
+      margin-bottom: 20px;
+      width: 100%;
+      height: auto;
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding:10px * 2;
+      border-bottom: 1px solid #ddd;
+      background: white;
+    }
+
+    .logo,
+    .nav {
+      display: inline-block;
+      margin: 0;
+    }
+
+    /* nav links */
+    .nav {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .stories{
+      overflow-y:auto;
+      height:300px;
+      margin-top:50px;
+      padding:10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .nav li {
+      display: inline-block;
+      margin-left: 40px;
+    }
+
+    .navbar a {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      color: #DDD;
+    }
+
+    /* if you want pull right nav links */
+    .nav-right {
+      float: right;
+      line-height: 39px;
+    }
+    </style>
   {% endblock %}
 
 </head>
 
 <body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+
+    <div class="container">
+
+      <h1 class="logo"><a href="#"><img src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png" alt="" style="width:40px">
+      </a>|
+    </h1>
+      <ul class="nav nav-right">
+        <div class="logoname" style="display:inline">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" alt="" style="width:150px">
+        </div>
+      </ul>
+    </div><!--/.container-->
+
+  </nav>
 
   {% block content %}  {%endblock%}
 
