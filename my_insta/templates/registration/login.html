@@ -26,12 +26,14 @@
           <form  action="/accounts/login/" method="post">
             {% csrf_token %}
             {% bootstrap_form form%}
+            <a href="/profile">
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-block" value="Login">
+              </div>
+            </a>
 
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-block" value="Login">
-            </div>
 
-            <input type="hidden" name="next" value="{{next}}">
+            <!-- <input type="hidden" name="next" value="{{next}}"> -->
 
           </form>
           <a href="/accounts/register">
