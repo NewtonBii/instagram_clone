@@ -47,7 +47,9 @@
     display: inline-block;
     margin: 0;
   }
-
+.iconns a:hover{
+  color: black;
+}
   /* nav links */
   .nav {
     padding: 0;
@@ -130,7 +132,7 @@
 
 <body>
   <!-- navbar -->
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#A2D9CE">
 
     <div class="container">
 
@@ -141,13 +143,39 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" alt="" style="width:150px">
     </div>
       <ul class="nav nav-right">
-        <form class="" action="index.html" method="post" style="padding: 10px; text-align: center;border-radius: 5px;border: 2px solid #ddd;outline: 0;margin-right:300px; display:inline">
-          <input type="text" name="" value="" placeholder="Search" style="border:none; padding:10px">
+        <form class="" action="index.html" method="post" style="padding: 15px; text-align: center;border-radius: 5px;border: 2px solid #ddd;outline: 0;margin-right:300px; display:inline">
+          <input type="text" name="" value="" placeholder="Search" style="border:none; padding:10px; background-color:inherit">
         </form>
-        <div class="iconns" style="font-size:40px; margin-right:30px; display:inline">
-          <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-right:30px"></i>
-          <i class="fa fa-heart-o" aria-hidden="true" style="font-size:40px; margin-right:30px"></i>
-          <i class="fa fa-user-o" aria-hidden="true" style="font-size:40px; margin-right:30px"></i>
+        {% if user.is_authenticated %}
+        <div class="iconns" style="font-size:40px; display:inline">
+          <a href="#">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-right:30px"></i>
+          </a>
+          <a href="{% url 'myProfile' %}">
+            <i class="fa fa-user-o" aria-hidden="false" style="font-size:40px; margin-right:30px"> </i>
+          </a>
+
+          <!-- <li class="dropdown">
+                <a href="/" class="dropdown-toggle" data-toggle="dropdown-menu" role="button" aria-hidden=""="false">
+                  <i class="fa fa-user-o" aria-hidden="true" style="font-size:40px; margin-right:30px"></i>
+                      </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="">Profile</a>
+                  </li>
+                  <li>
+                    <a href="/logout">Logout</a>
+                  </li>
+                </ul>
+              </li> -->
+            </ul>
+            {% else %}
+            <li>
+              <a class='btn btn-primary btn-block' href="/accounts/login">Login</a>
+            </li>
+
+            {% endif %}
+
         </div>
       </ul>
     </div><!--/.container-->

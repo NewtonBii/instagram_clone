@@ -4,7 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns=[
- url(r'^$', views.timelines, name='allTimelines')
+ url(r'^$', views.timelines, name='allTimelines'),
+ url(r'^profile/', views.profile, name ='myProfile')
 
 ]
 
