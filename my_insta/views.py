@@ -5,9 +5,11 @@ from .models import Image, Profile
 
 # Create your views here.
 def timelines(request):
-    images = Image.objects.all()
-    profiles = Profile.objects.all()
-    return render(request, 'timelines.html', {'images':images, 'profiles':profiles})
+    current_user = request.user
+    images = Image.objects.order_by('-date_uploaded')
+    profiles = Profile.objects.order_by('-last_update')
+    user_profile = Profile.objects.get(id = current_user.id)
+    return render(request, 'timelines.html', {'images':images, 'profiles':profiles, 'user_profile':user_profile})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -28,3 +30,8 @@ def new_status(request):
     else:
         form = NewStatusForm()
     return render(request, 'new_status.html', {"form": form})
+
+@login_required(login_url='/accounts/login')
+def user_profile(request, user_id):
+    profile = Profile.objects.get(id=user_id)
+    return render(request, 'profile.html', {'profile':profile})

@@ -14,10 +14,16 @@ class Image(models.Model):
     comments = models.TextField(null = True)
     user = models.ForeignKey(User)
 
+    class Meta:
+       ordering = ['-date_uploaded']
+
 
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'profiles/', null=True)
     user_bio = models.TextField()
     user = models.ForeignKey(User)
     last_update = models.DateTimeField(auto_now_add=True, null=True)
-    images_uploaded = models.ForeignKey(Image)
+    images_uploaded = models.ForeignKey(Image, null =True)
+
+    class Meta:
+        ordering =['-last_update']

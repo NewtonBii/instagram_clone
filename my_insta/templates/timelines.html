@@ -15,7 +15,6 @@
         <img src="{{image.image.url}}" class="img-responsive">
         <div class="like" style="font-size:30px">
           <i class="fa fa-heart-o" aria-hidden="true" style="margin-right:5px"></i>
-          <i class="material-icons">chat_bubble_outline</i>
           <i class="material-icons" style="float:right; font-size:40px">bookmark_border</i>
         </div>
         <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
@@ -39,9 +38,9 @@
   <div class="col-sm-5">
     <div class="col-sm-8">
       <div class="container-fluid" style="position:fixed; width:320px">
-        <header>
-          <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
-          <p style="font-weight:bold;font-size:16px">biinewton<br><span style="font-size:15px;font-weight:normal; color:grey">Newton Bii</span></p>
+        <header style="margin-bottom:30px">
+          <img src="{{user_profile.profile_photo.url}}" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
+          <p style="font-weight:bold;font-size:16px">{{user_profile.user}}</p>
         </header>
         <hr>
         <p style="float:left; font-size:15px; font-weight:bolder; color:grey">Stories</p>
@@ -50,7 +49,8 @@
           {% for profile in profiles %}
           <div class="user_stories" style="margin-bottom:20px">
             <img src="{{profile.profile_photo.url}}" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
-            <p style="font-weight:bold;font-size:16px">{{profile.user}}<br><span style="font-size:12px;font-weight:normal; color:grey">{{profile.last_update|timesince|upper}} AGO</span></p>
+            <a href="{% url 'userProfiles' profile.id %}"> <p style="font-weight:bold;font-size:16px">{{profile.user}}<br></a>
+            <span style="font-size:12px;font-weight:normal; color:grey">{{profile.last_update|timesince|upper}} AGO</span></p>
           </div>
           {% endfor %}
         </div>
@@ -73,7 +73,6 @@
         <img src="{{image.image.url}}" class="img-responsive">
         <div class="like" style="font-size:30px; margin-top:10px">
           <i class="fa fa-heart-o" aria-hidden="true" style="margin-right:5px"></i>
-          <i class="material-icons">chat_bubble_outline</i>
           <i class="material-icons" style="float:right; font-size:40px">bookmark_border</i>
         </div>
         <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
