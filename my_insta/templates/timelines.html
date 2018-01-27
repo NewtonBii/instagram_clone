@@ -9,20 +9,25 @@
       {% for image in images %}
       <div class="well" style="background-color:white">
         <header>
-          <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%">
+          <img src="{{image.image.url}}" alt="" style="height:50px;width:50px; border-radius:50%">
           <p style="display:inline; margin-left:10px; font-weight:bolder; font-size:16px">{{image.user}}</p>
         </header>
         <img src="{{image.image.url}}" class="img-responsive">
         <div class="like" style="font-size:30px">
           <i class="fa fa-heart-o" aria-hidden="true" style="margin-right:5px"></i>
-          <i class="fa fa-comments-o" aria-hidden="true"></i>
-          <i class="fa fa-bookmark-o" aria-hidden="true" style="float:right"></i>
+          <i class="material-icons">chat_bubble_outline</i>
+          <i class="material-icons" style="float:right; font-size:40px">bookmark_border</i>
         </div>
         <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
-        {% for comment in comments %}
+        <p style="margin-bottom:-1px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Newton Bii</span>That's awesome</p>
+        <p style="margin-bottom:-1px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Spark</span>Sweet</p>
+        <p style="margin-bottom:-1px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Coccoo</span>Jeez</p>
+
+
+        <!-- {% for comment in comments %}
         <p style="margin-top:-20px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">{{comment.user}}</span>{{comment.comment}}</p>
-        {% endfor %}
-        <p style="font-size:14px;color:grey">{{image.date_uploaded|timesince}} ago</p>
+        {% endfor %} -->
+        <p style="font-size:12px;color:grey; margin-top:10px">{{image.date_uploaded|timesince|upper}} AGO</p>
         <hr>
         <form class="" action="" method="post">
           <input type="text" name="" value="" placeholder="Add a comment" style="border:none; padding:10px; width:100%">
@@ -33,7 +38,7 @@
   </div>
   <div class="col-sm-5">
     <div class="col-sm-8">
-      <div class="container-fluid" style="position:fixed; width:350px">
+      <div class="container-fluid" style="position:fixed; width:320px">
         <header>
           <img src="https://static.pexels.com/photos/34950/pexels-photo.jpg" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
           <p style="font-weight:bold;font-size:16px">biinewton<br><span style="font-size:15px;font-weight:normal; color:grey">Newton Bii</span></p>
@@ -45,7 +50,7 @@
           {% for profile in profiles %}
           <div class="user_stories" style="margin-bottom:20px">
             <img src="{{profile.profile_photo.url}}" alt="" style="height:50px;width:50px; border-radius:50%; float:left; margin-right:15px">
-            <p style="font-weight:bold;font-size:16px">{{profile.user}}<br><span style="font-size:15px;font-weight:normal; color:grey">20 minutes ago</span></p>
+            <p style="font-weight:bold;font-size:16px">{{profile.user}}<br><span style="font-size:12px;font-weight:normal; color:grey">{{profile.last_update|timesince|upper}} AGO</span></p>
           </div>
           {% endfor %}
         </div>
@@ -66,10 +71,10 @@
           <p style="display:inline; margin-left:10px; font-weight:bolder; font-size:16px">{{image.user}}</p>
         </header>
         <img src="{{image.image.url}}" class="img-responsive">
-        <div class="like" style="font-size:30px; margin-top:50px">
+        <div class="like" style="font-size:30px; margin-top:10px">
           <i class="fa fa-heart-o" aria-hidden="true" style="margin-right:5px"></i>
-          <i class="fa fa-comments-o" aria-hidden="true"></i>
-          <i class="fa fa-bookmark-o" aria-hidden="true" style="float:right"></i>
+          <i class="material-icons">chat_bubble_outline</i>
+          <i class="material-icons" style="float:right; font-size:40px">bookmark_border</i>
         </div>
         <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
         <p style="margin-top:-20px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Kepha Okari</span>Awesome Place</p>
