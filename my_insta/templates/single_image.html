@@ -1,0 +1,31 @@
+{% extends 'base.html' %}{% block content %}
+<div class="col-sm-3">
+
+</div>
+<div class="col-sm-6" style="margin-top:100px">
+  <div class="well" style="background-color:white; margin-bottom:70px">
+    <header>
+      <img src="{{image.image.url}}" alt="" style="height:50px;width:50px; border-radius:50%">
+      <p style="display:inline; margin-left:10px; font-weight:bolder; font-size:16px">{{image.user}}</p>
+    </header>
+    <img src="{{image.image.url}}" class="img-responsive">
+    <div class="like" style="font-size:30px">
+      <i class="fa fa-heart-o" aria-hidden="true" style="" id="like-button"></i>
+      <i class="material-icons" style="float:right; font-size:40px">bookmark_border</i>
+    </div>
+    <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
+    {% for comment in comments %}
+    <p style="margin-bottom:-1px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">{{comment.user}}</span>{{comment.comment}}</p>
+    {% endfor %}
+    <p style="font-size:12px;color:grey; margin-top:10px">{{image.date_uploaded|timesince|upper}} AGO</p>
+    <hr>
+    <form class="" action="{% url 'singleImage' image.id %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="comment" placeholder="Add a comment" style="border:none; padding:10px; width:100%" value="{{comment}}">
+    </form>
+  </div>
+</div>
+<div class="col-sm-3">
+
+</div>
+{% endblock %}

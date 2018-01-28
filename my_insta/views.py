@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import NewStatusForm
-from .models import Image, Profile
+# from .forms import NewStatusForm
+from .models import Image, Profile, Comments
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -36,3 +36,22 @@ def new_status(request):
 def user_profile(request, user_id):
     profile = Profile.objects.get(id=user_id)
     return render(request, 'profile.html', {'profile':profile})
+
+@login_required(login_url='/accounts/login')
+def submit_comment(request):
+    current_user = request.user
+    user_comment = request.POST.get('comment')
+    new_comment = Comments(comment=user_comment, user = current_user)
+    new_comment.save()
+    print(new_comment)
+    return redirect('allTimelines')
+    
+@login_required(login_url='/accounts/login')
+def single_image(request, photo_id):
+    image = Image.objects.get(id = photo_id)
+    comments = Comments.objects.all().filter(id = image.id)
+    current_user = request.user
+    user_comment = request.POST.get('comment')
+    new_comment = Comments(comment=user_comment, user = current_user, image = image)
+    new_comment.save()
+    return render(request, 'single_image.html', {'image':image, 'comments':comments})

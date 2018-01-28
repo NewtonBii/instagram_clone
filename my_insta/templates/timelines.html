@@ -7,29 +7,27 @@
     </div>
     <div class="col-sm-10">
       {% for image in images %}
-      <div class="well" style="background-color:white">
+      <div class="well" style="background-color:white; margin-bottom:70px">
         <header>
           <img src="{{image.image.url}}" alt="" style="height:50px;width:50px; border-radius:50%">
           <p style="display:inline; margin-left:10px; font-weight:bolder; font-size:16px">{{image.user}}</p>
         </header>
-        <img src="{{image.image.url}}" class="img-responsive">
+        <a href="{% url 'singleImage' image.id%}">
+          <img src="{{image.image.url}}" class="img-responsive">
+        </a>
         <div class="like" style="font-size:30px">
-          <i class="fa fa-heart-o" aria-hidden="true" style="margin-right:5px"></i>
+          <i class="fa fa-heart-o" aria-hidden="true" style="" id="like-button"></i>
           <i class="material-icons" style="float:right; font-size:40px">bookmark_border</i>
         </div>
         <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
-        <p style="margin-bottom:-1px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Newton Bii</span>That's awesome</p>
-        <p style="margin-bottom:-1px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Spark</span>Sweet</p>
-        <p style="margin-bottom:-1px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Coccoo</span>Jeez</p>
-
-
-        <!-- {% for comment in comments %}
-        <p style="margin-top:-20px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">{{comment.user}}</span>{{comment.comment}}</p>
-        {% endfor %} -->
+        {% for comment in comments %}
+        <p style="margin-bottom:-1px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">{{comment.user}}</span>{{comment.comment}}</p>
+        {% endfor %}
         <p style="font-size:12px;color:grey; margin-top:10px">{{image.date_uploaded|timesince|upper}} AGO</p>
         <hr>
-        <form class="" action="" method="post">
-          <input type="text" name="" value="" placeholder="Add a comment" style="border:none; padding:10px; width:100%">
+        <form class="" action="{% url 'singleImage' image.id %}" method="post">
+          {% csrf_token %}
+          <input type="text" name="comment" placeholder="Add a comment" style="border:none; padding:10px; width:100%" value="{{comment}}">
         </form>
       </div>
       {% endfor %}
@@ -76,6 +74,7 @@
           <i class="material-icons" style="float:right; font-size:40px">bookmark_border</i>
         </div>
         <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
+
         <p style="margin-top:-20px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">Kepha Okari</span>Awesome Place</p>
         <p style="font-size:14px;color:grey">{{image.date_uploaded|timesince}} ago</p>
         <hr>

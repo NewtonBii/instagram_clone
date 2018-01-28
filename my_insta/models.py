@@ -5,17 +5,23 @@ from tinymce.models import HTMLField
 # Create your models here.
 
 
+
 class Image(models.Model):
     image = models.ImageField(upload_to = 'photos/', null = True)
     image_name = models.CharField(max_length=30)
     image_caption = models.TextField()
     likes = models.IntegerField()
     date_uploaded = models.DateTimeField(auto_now_add=True, null=True)
-    comments = models.TextField(null = True)
     user = models.ForeignKey(User)
 
     class Meta:
        ordering = ['-date_uploaded']
+
+class Comments(models.Model):
+    comment = models.TextField(null=True)
+    user = models.ForeignKey(User, null=True)
+    image = models.ForeignKey(Image, null=True)
+    time = models.DateTimeField(auto_now_add=True, null=True)
 
 
 class Profile(models.Model):
@@ -23,7 +29,6 @@ class Profile(models.Model):
     user_bio = models.TextField()
     user = models.ForeignKey(User)
     last_update = models.DateTimeField(auto_now_add=True, null=True)
-    images_uploaded = models.ForeignKey(Image, null =True)
 
     class Meta:
         ordering =['-last_update']
