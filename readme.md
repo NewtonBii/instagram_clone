@@ -21,7 +21,7 @@ Run ``python3.6 manage.py runserver`` and view live on ``Localhost:8000`` in you
 ## Built With
 
 * [Django1.11](https://docs.djangoproject.com/en/1.11/) - The web framework used
-* [Python3.6.3]('https://www.python.org/downloads/')- The language version used.
+* [Python3.6.3](https://www.python.org/downloads/)- The language version used.
 * [PostgreSQL](https://www.postgresql.org/) - The database used.
 
 ## Authors
