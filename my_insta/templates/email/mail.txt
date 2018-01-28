@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to InstaGrama. You will find the most amazing features of this app. Enjoy
