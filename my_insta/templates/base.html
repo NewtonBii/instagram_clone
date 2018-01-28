@@ -182,8 +182,9 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" alt="" style="width:135px">
       </div>
       <ul class="nav nav-right">
-        <form class="" action="index.html" method="post" style="padding: 8px; text-align: center;border-radius: 8px;border: 2px solid #ddd;outline: 0;margin-right:400px; display:inline">
-          <input type="text" name="" value="" placeholder="Search" style="border:none; padding:10px; background-color:inherit">
+        <form class="form-group" action="{% url 'findProfile' %}" method="post" style="padding: 8px; text-align: center;border-radius: 8px;border: 2px solid #ddd;outline: 0;margin-right:400px; display:inline" role="search">
+          {% csrf_token %}
+          <input type="text" name="images" placeholder="Search" style="border:none; padding:10px; background-color:inherit">
         </form>
         {% if user.is_authenticated %}
         <div class="iconns" style="font-size:40px; display:inline">

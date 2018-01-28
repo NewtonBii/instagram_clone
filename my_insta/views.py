@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 # from .forms import NewStatusForm
-from .models import Image, Profile, Comments
+from .models import Image, Profile
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -45,7 +45,7 @@ def submit_comment(request):
     new_comment.save()
     print(new_comment)
     return redirect('allTimelines')
-    
+
 @login_required(login_url='/accounts/login')
 def single_image(request, photo_id):
     image = Image.objects.get(id = photo_id)
@@ -55,3 +55,12 @@ def single_image(request, photo_id):
     new_comment = Comments(comment=user_comment, user = current_user, image = image)
     new_comment.save()
     return render(request, 'single_image.html', {'image':image, 'comments':comments})
+
+def find_profile(request):
+    if 'images' in request.GET and request.GET['images']:
+        search_term = request.GET.get('images')
+        searched_image = Image.search_by_user(search_term)
+        return render(request, 'user_profile.html', {'images':searched_image})
+    else:
+        message = 'You haven\'t searched for anything'
+        return render(request, 'single_image.html')

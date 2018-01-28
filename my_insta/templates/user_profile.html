@@ -1,0 +1,53 @@
+{% extends 'base.html'%}{% block content %}
+<div class="col-sm-7">
+  <div class="col-sm-2">
+
+  </div>
+  <div class="col-sm-10">
+    {% for image in images %}
+    <div class="well" style="background-color:white; margin-bottom:70px">
+      <header>
+        <img src="{{image.image.url}}" alt="" style="height:50px;width:50px; border-radius:50%">
+        <p style="display:inline; margin-left:10px; font-weight:bolder; font-size:16px">{{image.user}}</p>
+      </header>
+      <a href="{% url 'singleImage' image.id%}">
+        <img src="{{image.image.url}}" class="img-responsive">
+      </a>
+      <div class="like" style="font-size:30px">
+        <i class="fa fa-heart-o" aria-hidden="true" style="" id="like-button"></i>
+        <i class="material-icons" style="float:right; font-size:40px">bookmark_border</i>
+      </div>
+      <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
+      {% for comment in comments %}
+      <p style="margin-bottom:-1px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">{{comment.user}}</span>{{comment.comment}}</p>
+      {% endfor %}
+      <p style="font-size:12px;color:grey; margin-top:10px">{{image.date_uploaded|timesince|upper}} AGO</p>
+      <hr>
+      <form class="" action="{% url 'singleImage' image.id %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="comment" placeholder="Add a comment" style="border:none; padding:10px; width:100%" value="{{comment}}">
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="col-sm-5">
+  <div class="container-fluid" style="background-color:#EBEDEF; margin-top:100px">
+    <div class="row">
+      <div class="col-sm-8" style=" padding:30px; border-bottom: 1px solid #ddd">
+        <div class="profile">
+          <img src="{{profile.profile_photo.url}}" alt="" style="height:150px;width:150px; border-radius:50%; float:left; margin-right:50px">
+          <p style="font-weight:bold; font-size:35px">{{profile.user}}</p>
+          <div class="">
+          </div>
+          <br>
+          <p style="font-size:20px"><span><span style="font-weight:bolder">{{profile.images_uploaded}} </span>Posts</span> <span style=""><span style="font-weight:bolder">1000 </span> Followers</span> <span style=""> <span style="font-weight:bolder">4000 </span>Following</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <p class="text-center" style="font-size:20px">Posts</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
