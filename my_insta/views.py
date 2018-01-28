@@ -38,23 +38,9 @@ def user_profile(request, user_id):
     return render(request, 'profile.html', {'profile':profile})
 
 @login_required(login_url='/accounts/login')
-def submit_comment(request):
-    current_user = request.user
-    user_comment = request.POST.get('comment')
-    new_comment = Comments(comment=user_comment, user = current_user)
-    new_comment.save()
-    print(new_comment)
-    return redirect('allTimelines')
-
-@login_required(login_url='/accounts/login')
 def single_image(request, photo_id):
     image = Image.objects.get(id = photo_id)
-    comments = Comments.objects.all().filter(id = image.id)
-    current_user = request.user
-    user_comment = request.POST.get('comment')
-    new_comment = Comments(comment=user_comment, user = current_user, image = image)
-    new_comment.save()
-    return render(request, 'single_image.html', {'image':image, 'comments':comments})
+    return render(request, 'single_image.html', {'image':image})
 
 def find_profile(request):
     if 'images' in request.GET and request.GET['images']:
