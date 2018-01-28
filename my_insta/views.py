@@ -16,7 +16,8 @@ def timelines(request):
 def profile(request):
     current_user = request.user
     profile = Profile.objects.get(id = current_user.id)
-    return render(request, 'profile.html', {'profile':profile})
+    images = Image.objects.all().filter(id=current_user.id)
+    return render(request, 'profile.html', {'profile':profile, 'images':images})
 
 @login_required(login_url='/accounts/login/')
 def new_status(request):
@@ -35,7 +36,9 @@ def new_status(request):
 @login_required(login_url='/accounts/login')
 def user_profile(request, user_id):
     profile = Profile.objects.get(id=user_id)
-    return render(request, 'profile.html', {'profile':profile})
+    images = Image.objects.all().filter(id=user_id)
+    print(images)
+    return render(request, 'profile.html', {'profile':profile, 'images':images})
 
 @login_required(login_url='/accounts/login')
 def single_image(request, photo_id):

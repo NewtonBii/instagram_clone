@@ -22,5 +22,8 @@
   <div class="row">
     <p class="text-center" style="font-size:20px">Posts</p>
   </div>
+  {% for image in images %}
+  <img src="{{image.image.url}}" alt="">
+  {% endfor %}
 </div>
 {% endblock %}
