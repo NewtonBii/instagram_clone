@@ -188,11 +188,9 @@
         </form>
         {% if user.is_authenticated %}
         <div class="iconns" style="font-size:40px; display:inline">
-          <!-- <a href="{% url 'newStatus' %}">
-
-        <i class="material-icons">perm_identity</i>
-
-          </a> -->
+          <a href="{% url 'newStatus' %}">
+        <i class="material-icons" style="font-size:40px">add</i>
+          </a>
           <a href="{% url 'myProfile' %}">
             <i class="material-icons" style="font-size:40px">perm_identity</i>
           </a>

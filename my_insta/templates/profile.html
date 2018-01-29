@@ -13,7 +13,7 @@
           <i class="fa fa-cog" aria-hidden="true" style="font-size:30px; margin-left:10px"></i>
         </div>
         <br>
-        <p style="font-size:20px"><span><span style="font-weight:bolder">{{profile.images_uploaded}} </span>Posts</span> <span style="margin-left:20px"><span style="font-weight:bolder">1000 </span> Followers</span> <span style="margin-left:20px"> <span style="font-weight:bolder">4000 </span>Following</span></p>
+        <p style="font-size:20px"><span><span style="font-weight:bolder"> </span>Posts</span> <span style="margin-left:20px"><span style="font-weight:bolder">1000 </span> Followers</span> <span style="margin-left:20px"> <span style="font-weight:bolder">4000 </span>Following</span></p>
       </div>
     </div>
     <div class="col-sm-2">
@@ -22,8 +22,17 @@
   <div class="row">
     <p class="text-center" style="font-size:20px">Posts</p>
   </div>
-  {% for image in images %}
-  <img src="{{image.image.url}}" alt="">
-  {% endfor %}
+  <div class="container">
+    {% for image in images %}
+    <a href="{% url 'singleImage' image.id%}">
+      <div class="item">
+        <img src="{{image.image.url}}">
+      </div>
+    </a>
+    {% endfor %}
+</div> <!--close container-->
+
+
+
 </div>
 {% endblock %}

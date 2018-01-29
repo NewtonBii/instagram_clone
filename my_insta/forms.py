@@ -1,5 +1,7 @@
 from django import forms
 from .models import Image
 #......
-# class NewStatusForm(forms.Form):
-#     image = 
+class NewStatusForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ('image', 'image_caption')

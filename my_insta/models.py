@@ -13,6 +13,9 @@ class Profile(models.Model):
     class Meta:
         ordering =['-last_update']
 
+    def __str__(self):
+        return self.user.username
+
     def save_profile(self):
         self.save()
 
@@ -20,8 +23,9 @@ class Image(models.Model):
     image = models.ImageField(upload_to = 'photos/', null = True)
     image_name = models.CharField(max_length=30, null=True)
     image_caption = models.TextField(null =True)
-    likes = models.IntegerField(null =True)
+    likes = models.IntegerField(default=0)
     date_uploaded = models.DateTimeField(auto_now_add=True, null=True)
+    user = models.ForeignKey(User, null=True)
     comments = models.TextField(null=True)
     profile = models.ForeignKey(Profile, null=True)
 
