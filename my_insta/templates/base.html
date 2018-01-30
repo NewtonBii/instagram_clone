@@ -188,7 +188,7 @@
         </form>
         {% if user.is_authenticated %}
         <div class="iconns" style="font-size:40px; display:inline">
-          <a href="{% url 'newStatus' %}">
+          <a href="{% url 'newStatus' user.username %}">
         <i class="material-icons" style="font-size:40px">add</i>
           </a>
           <a href="{% url 'myProfile' %}">

@@ -19,15 +19,16 @@ def profile(request):
     return render(request, 'profile.html', {'images':images, 'profile':profile})
 
 @login_required(login_url='/accounts/login/')
-def new_status(request):
+def new_status(request, username):
     current_user = request.user
+    username = current_user.username
     if request.method == 'POST':
         form = NewStatusForm(request.POST, request.FILES)
         if form.is_valid():
             image = form.save()
-            image.profile = request.user.profile
+            image.user = request.user
             image.save()
-        return redirect('timelines', kwargs={'username':request.user.username})
+        return redirect('allTimelines')
     else:
         form = NewStatusForm()
     return render(request, 'new_status.html', {"form": form})
