@@ -16,7 +16,9 @@
           <img src="{{image.image.url}}" class="img-responsive">
         </a>
         <div class="like" style="font-size:30px">
-          <i class="fa fa-heart-o" aria-hidden="true" style="" id="like-button"></i>
+          <a href="{% url 'singleImage' image.id%}">
+            <i class="fa fa-heart-o" aria-hidden="true" style="" id="like-button"></i>
+          </a>
           <i class="material-icons" style="float:right; font-size:40px">bookmark_border</i>
         </div>
         <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>

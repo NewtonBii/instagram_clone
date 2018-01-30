@@ -36,7 +36,7 @@ def new_status(request, username):
 @login_required(login_url='/accounts/login')
 def user_profile(request, user_id):
     profile = Profile.objects.get(id=user_id)
-    images = Image.objects.all().filter(profile_id=user_id)
+    images = Image.objects.all().filter(user_id=user_id)
     return render(request, 'profile.html', {'profile':profile, 'images':images})
 
 @login_required(login_url='/accounts/login')
@@ -52,3 +52,10 @@ def find_profile(request):
     else:
         message = 'You haven\'t searched for anything'
         return render(request, 'single_image.html')
+
+@login_required (login_url='/accounts/register/')
+def single_image_like(request, photo_id):
+    image = Image.objects.get(id=photo_id)
+    image.likes = image.likes + 1
+    image.save()
+    return redirect('allTimelines')
