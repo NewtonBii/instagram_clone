@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content%}
+{% extends 'base.html' %} {% load bootstrap3 %} {% load staticfiles %}{% block content%}
 <div class="container-fluid" style="margin-top:150px">
   {% if user.is_authenticated %}
   <div class="col-sm-7">
@@ -19,6 +19,9 @@
           <a href="{% url 'singleImageLike' image.id%}">
             <i class="fa fa-heart-o" aria-hidden="true" style="" id="like-button"></i>
           </a>
+          <a href="{% url 'newComment' image.user.username %}">
+            <i class="material-icons" style="margin-left:10px">chat_bubble_outline</i>
+          </a>
           <i class="material-icons" style="float:right; font-size:40px">bookmark_border</i>
         </div>
         <p style="margin-top:10px;font-weight:bolder; font-size:16px">{{image.likes}} Likes</p><br>
@@ -27,10 +30,6 @@
         {% endfor %}
         <p style="font-size:12px;color:grey; margin-top:10px">{{image.date_uploaded|timesince|upper}} AGO</p>
         <hr>
-        <form class="" action="{% url 'singleImage' image.id %}" method="post">
-          {% csrf_token %}
-          <input type="text" name="comment" placeholder="Add a comment" style="border:none; padding:10px; width:100%" value="{{comment}}">
-        </form>
       </div>
       {% endfor %}
     </div>

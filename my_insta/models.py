@@ -26,7 +26,6 @@ class Image(models.Model):
     likes = models.IntegerField(default=0)
     date_uploaded = models.DateTimeField(auto_now_add=True, null=True)
     user = models.ForeignKey(User, null=True)
-    comments = models.TextField(null=True)
     profile = models.ForeignKey(Profile, null=True)
 
     class Meta:
@@ -44,3 +43,12 @@ class Image(models.Model):
     def get_image_by_id(cls, image_id):
         images = cls.objects.get(id=image_id)
         return images
+
+class Comments(models.Model):
+    comment = models.CharField(max_length=200)
+    user = models.ForeignKey(User, null=True)
+    image = models.ForeignKey(Image, null=True)
+    time_comment = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+       ordering = ['-time_comment']

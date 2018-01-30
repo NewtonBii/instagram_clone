@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import NewStatusForm
-from .models import Image, Profile
+from .forms import NewStatusForm, NewCommentForm
+from .models import Image, Profile, Comments
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -9,7 +9,8 @@ def timelines(request):
     current_user = request.user
     images = Image.objects.order_by('-date_uploaded')
     profiles = Profile.objects.order_by('-last_update')
-    return render(request, 'timelines.html', {'images':images, 'profiles':profiles, 'user_profile':user_profile})
+    comments = Comments.objects.order_by('-time_comment')
+    return render(request, 'timelines.html', {'images':images, 'profiles':profiles, 'user_profile':user_profile, 'comments':comments})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -59,3 +60,18 @@ def single_image_like(request, photo_id):
     image.likes = image.likes + 1
     image.save()
     return redirect('allTimelines')
+
+@login_required(login_url='/accounts/login/')
+def new_comment(request, username):
+    current_user = request.user
+    username = current_user.username
+    if request.method == 'POST':
+        form = NewCommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save()
+            comment.user = request.user
+            comment.save()
+        return redirect('allTimelines')
+    else:
+        form = NewCommentForm()
+    return render(request, 'new_comment.html', {"form": form})
