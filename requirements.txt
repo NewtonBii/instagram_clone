@@ -3,7 +3,7 @@ confusable-homoglyphs==3.0.0
 dj-database-url==0.4.2
 Django==1.11.7
 django-bootstrap3==9.1.0
-django-registration==2.4.1
+django-registration==3.1.2
 django-tinymce==2.7.0
 gunicorn==19.7.1
 isort==4.2.15
